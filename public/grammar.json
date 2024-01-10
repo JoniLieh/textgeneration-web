@@ -59,12 +59,13 @@
     "mich"
   ],
   "A": [
-    "{B}"
+    "{Hoeflichkeit?} {B}"
   ],
   "B": [
-    "{C}"
+    "geh {C}"
   ],
   "C": [
-    "Es funktioniert!"
+    "Angeln",
+    "Arbeiten"
   ]
 }
