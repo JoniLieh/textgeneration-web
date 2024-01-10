@@ -1,0 +1,70 @@
+{
+  "Start": [
+    "{A}",
+    "{Hoeflichkeit} schließe die {Objekt-Die}",
+    "{Hoeflichkeit} {VerbDu} {Subjekt} {Verb}",
+    "{Hoeflichkeit?} {VerbSie} Sie {Subjekt}",
+    "{Hoeflichkeit?} {VerbDu} du {Subjekt}",
+    "{Hoeflichkeit+} {VerbDuLokation} du {Lokation} {Subjekt}",
+    "{Hoeflichkeit-Sie} {Subjekt} {Hoeflichkeit?} {VerbSie}"
+  ],
+  "Artikel": [
+    "der",
+    "die",
+    "das"
+  ],
+  "VerbSie": [
+    "helfen",
+    "rufen"
+  ],
+  "Verb": [
+    "kommen",
+    "gehen"
+  ],
+  "VerbDu": [
+    "hilfst",
+    "rufst",
+    "lasst",
+    "schließe"
+  ],
+  "VerbDuLokation": [
+    "kommst"
+  ],
+  "Lokation": [
+    "zu",
+    "nach"
+  ],
+  "Hoeflichkeit-Sie": [
+    "könnten Sie"
+  ],
+  "Hoeflichkeit": [
+    "bitte"
+  ],
+  "Objekt-Die": [
+    "Tür",
+    "Treppe"
+  ],
+  "Objekt-Das": [
+    "Handy",
+    "Auto"
+  ],
+  "Objekt-Der": [
+    "Schreibtisch"
+  ],
+  "Subjekt": [
+    "uns",
+    "mir",
+    "ihnen",
+    "dir",
+    "mich"
+  ],
+  "A": [
+    "{B}"
+  ],
+  "B": [
+    "{C}"
+  ],
+  "C": [
+    "Es funktioniert!"
+  ]
+}
