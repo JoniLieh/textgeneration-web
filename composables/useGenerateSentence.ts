@@ -51,12 +51,16 @@ function ReplacePartOfSentence(partOfSentence: string, grammar: IGrammar, MAX_RE
         replacement += ' '
     }
 
-  } else if (notation === '?' && RandomElement([true, false])) {
-    // für optionale Elemente auf der rechten Seite einer Produktionsregel
-    let grammaredPart = HandleSentence(RandomElement(grammar[partOfSentence]) as string, grammar, MAX_REPETITIONS)
-
-    // add whitespace for optional
-    replacement += grammaredPart
+  } else if (notation === '?') {
+    if (RandomElement([false, true]) as boolean) {
+      // für optionale Elemente auf der rechten Seite einer Produktionsregel
+      let grammaredPart = HandleSentence(RandomElement(grammar[partOfSentence]) as string, grammar, MAX_REPETITIONS)
+  
+      // add whitespace for optional
+      replacement += grammaredPart
+    } else {
+      // do nothing
+    }
   } else {
     // No notation found, lookup grammar normally
     let grammaredPart = HandleSentence(RandomElement(grammar[partOfSentence]) as string, grammar, MAX_REPETITIONS)
