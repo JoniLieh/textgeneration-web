@@ -72,8 +72,6 @@
 </template>
 
 <script lang="ts" setup>
-import JsonEditorVue from 'json-editor-vue'
-
 const grammarStore = useMyGrammarStore()
 const generationMode = ref(0)
 const { grammar, grammarState, START_KEY_State, MAX_REPETITIONS_State }: any = storeToRefs(grammarStore)
