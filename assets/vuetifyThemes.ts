@@ -20,9 +20,9 @@ export const dark = {
   colors: {
     // background: "#edf1f4",
     // surface: "#FFFFFF",
-    primary: "#6200EE",
-    secondary: "#03DAC6",
-    accent: "#cc0000",
+    primary: "#BF247A",
+    secondary: "#812B8C",
+    accent: "#2A2359",
     error: twColors.red[500],
     info: twColors.blue[500],
     success: twColors.emerald[500],

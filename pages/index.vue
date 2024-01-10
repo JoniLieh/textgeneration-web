@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="text-h3 my-12 text-center">Projektaufgabe 2 – NLP „Textgenerierung“</h1>
+    
     <v-row>
       <v-col cols="12">
         <v-card>
@@ -11,13 +12,13 @@
           <v-card-text class="pa-4">
             <v-row>
               <v-col cols="6">
-                <v-text-field hide-details variant="outlined" label="MAX_REPETITIONS"
-                  v-model="MAX_REPETITIONS_State" prepend-icon="mdi-repeat"></v-text-field>
+                <v-text-field hide-details variant="outlined" label="MAX_REPETITIONS" v-model="MAX_REPETITIONS_State"
+                  prepend-icon="mdi-repeat"></v-text-field>
               </v-col>
-              
+
               <v-col cols="6">
-                <v-text-field hide-details variant="outlined" label="START_SYMBOL"
-                  v-model="START_KEY_State" prepend-icon="mdi-ray-start-arrow"></v-text-field>
+                <v-text-field hide-details variant="outlined" label="START_SYMBOL" v-model="START_KEY_State"
+                  prepend-icon="mdi-ray-start-arrow"></v-text-field>
               </v-col>
             </v-row>
           </v-card-text>
@@ -33,6 +34,31 @@
           </v-card-title>
 
           <v-card-text>
+            <v-alert type="info" variant="tonal" border="start" class="my-4">
+              <ul>
+                <li>
+                  <code>
+                    <span class="text-error">[</span>"Option1", "Option2", ...<span class="text-error">]</span><v-icon left>mdi-arrow-right</v-icon> für Alternativen auf der rechten Seite einer Produktionsregel
+                  </code>
+                </li>
+                <li>
+                  <code>
+                    {Regel<span class="text-error">+</span>} <v-icon left>mdi-arrow-right</v-icon> für 1 bis n Wiederholungen auf der rechten Seite der Produktionsregel
+                  </code>
+                </li>
+                <li>
+                  <code>
+                    {Regel<span class="text-error">?</span>} <v-icon left>mdi-arrow-right</v-icon> für optionale Elemente auf der rechten Seite einer Produktionsregel
+                  </code>
+                </li>
+                <li>
+                  <code>
+                    {Regel<span class="text-error">*</span>} <v-icon left>mdi-arrow-right</v-icon> für 0 bis n Wiederholungen auf der rechten Seite einer Produktionsregel
+                  </code>
+                </li>
+              </ul>
+            </v-alert>
+
             <client-only>
               <JsonEditorVue v-model="grammarState" mode="text" />
             </client-only>
