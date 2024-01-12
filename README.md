@@ -22,7 +22,18 @@ Nichtterminal‐Symbols mit den erweiterten Produktionsregeln generieren kann. A
 ein Terminal‐Symbol vorgelegt werden, das in der generierten gültigen Zeichenkette vom
 Startsymbol der Grammatik enthalten sein muss.
 
-# Nuxt 3 Minimal Starter
+![previewImage](https://i.imgur.com/3O7p7Nw.png)
+
+```sh
+bun install
+# Development
+bun run dev
+# Production
+bun run build
+bun run start
+```
+
+# Nuxt 3
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
