@@ -22,8 +22,11 @@ Nichtterminal‐Symbols mit den erweiterten Produktionsregeln generieren kann. A
 ein Terminal‐Symbol vorgelegt werden, das in der generierten gültigen Zeichenkette vom
 Startsymbol der Grammatik enthalten sein muss.
 
+## Preview
+>[https://textgeneration-web.vercel.app/](https://textgeneration-web.vercel.app/)
 ![previewImage](https://i.imgur.com/3O7p7Nw.png)
 
+## How to run w/ bun
 ```sh
 bun install
 # Development
