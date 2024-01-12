@@ -5,10 +5,9 @@
     <v-row>
       <v-col cols="12">
         <v-card>
-          <v-card-title>
-            <v-toolbar color="accent" title="Einstellungen">
-            </v-toolbar>
-          </v-card-title>
+          <v-toolbar color="accent" title="Einstellungen">
+          </v-toolbar>
+          
           <v-card-text class="pa-4">
             <v-row>
               <v-col cols="6">
@@ -27,33 +26,31 @@
 
       <v-col md="6" sm="12">
         <v-card elevation="2">
-          <v-card-title>
-            <v-toolbar color="primary" title="Grammatik-Editor">
-              <v-btn @click="download()" icon="mdi-download"></v-btn>
-            </v-toolbar>
-          </v-card-title>
+          <v-toolbar color="primary" title="Grammatik-Editor">
+            <v-btn @click="download()" icon="mdi-download"></v-btn>
+          </v-toolbar>
 
           <v-card-text>
             <v-alert type="info" variant="tonal" border="start" class="my-4">
               <ul>
                 <li>
                   <code>
-                    <span class="text-error">[</span>"Option1", "Option2", ...<span class="text-error">]</span><v-icon left>mdi-arrow-right</v-icon> für Alternativen auf der rechten Seite einer Produktionsregel
+                    <span class="text-error">[</span>"Option1", "Option2", ...<span class="text-error">]</span><v-icon start>mdi-arrow-right</v-icon>für Alternativen auf der rechten Seite einer Produktionsregel
                   </code>
                 </li>
                 <li>
                   <code>
-                    {Regel<span class="text-error">+</span>} <v-icon left>mdi-arrow-right</v-icon> für 1 bis n Wiederholungen auf der rechten Seite der Produktionsregel
+                    {Regel<span class="text-error">+</span>} <v-icon start>mdi-arrow-right</v-icon>für 1 bis n Wiederholungen auf der rechten Seite der Produktionsregel
                   </code>
                 </li>
                 <li>
                   <code>
-                    {Regel<span class="text-error">?</span>} <v-icon left>mdi-arrow-right</v-icon> für optionale Elemente auf der rechten Seite einer Produktionsregel
+                    {Regel<span class="text-error">?</span>} <v-icon start>mdi-arrow-right</v-icon>für optionale Elemente auf der rechten Seite einer Produktionsregel
                   </code>
                 </li>
                 <li>
                   <code>
-                    {Regel<span class="text-error">*</span>} <v-icon left>mdi-arrow-right</v-icon> für 0 bis n Wiederholungen auf der rechten Seite einer Produktionsregel
+                    {Regel<span class="text-error">*</span>} <v-icon start>mdi-arrow-right</v-icon>für 0 bis n Wiederholungen auf der rechten Seite einer Produktionsregel
                   </code>
                 </li>
               </ul>
@@ -67,16 +64,14 @@
       </v-col>
       <v-col md="6" sm="12">
         <v-card elevation="2">
-          <v-card-title>
-            <v-toolbar color="secondary" title="Generation">
-              <v-btn-toggle v-model="generationMode" mandatory>
-                <v-btn color="secondary">Alle</v-btn>
-                <v-btn color="secondary">Einzeln</v-btn>
-              </v-btn-toggle>
+          <v-toolbar color="secondary" title="Generation">
+            <v-btn-toggle v-model="generationMode" mandatory>
+              <v-btn color="secondary">Alle</v-btn>
+              <v-btn color="secondary">Einzeln</v-btn>
+            </v-btn-toggle>
 
-              <v-btn @click="RunGrammar()" icon="mdi-refresh" title="Manuell Neugenerieren" class="ml-2"></v-btn>
-            </v-toolbar>
-          </v-card-title>
+            <v-btn @click="RunGrammar()" icon="mdi-refresh" title="Manuell Neugenerieren" class="ml-2"></v-btn>
+          </v-toolbar>
 
           <v-card-text>
             <v-select v-if="generationMode == 1" :items="singleStartItems" v-model="singleStartKey"
@@ -84,7 +79,7 @@
 
             <v-list :items="output" lines="two" density="comfortable" mandatory>
               <template #subtitle="{ item }: any">
-                {{ item.subtitle }}
+                <v-icon start>mdi-ray-start-arrow</v-icon>{{ item.subtitle }}
               </template>
               <template #prepend>
                 <v-icon>mdi-send</v-icon>
