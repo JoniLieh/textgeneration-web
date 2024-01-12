@@ -1,31 +1,21 @@
 {
   "Start": [
     "{A}",
-    "{Hoeflichkeit} schließe die {Objekt-Die}",
-    "{Hoeflichkeit} {VerbDu} {Subjekt} {Verb}",
-    "{Hoeflichkeit?} {VerbSie} Sie {Subjekt}",
-    "{Hoeflichkeit?} {VerbDu} du {Subjekt}",
-    "{Hoeflichkeit+} {VerbDuLokation} du {Lokation} {Subjekt}",
+    "{Hoeflichkeit?} schließe {Objekt-Schließe} ab",
+    "{Hoeflichkeit?} {VerbGeben} mir ein {Objekt-Das} {Aufzaehlung*}",
+    "{Hoeflichkeit+} {VerbDuLokation} du {Lokation} {Ort}",
     "{Hoeflichkeit-Sie} {Subjekt} {Hoeflichkeit?} {VerbSie}"
-  ],
-  "Artikel": [
-    "der",
-    "die",
-    "das"
   ],
   "VerbSie": [
     "helfen",
-    "rufen"
+    "zurufen",
+    "hinterher fahren"
   ],
-  "Verb": [
-    "kommen",
-    "gehen"
-  ],
-  "VerbDu": [
-    "hilfst",
-    "rufst",
-    "lasst",
-    "schließe"
+  "VerbGeben": [
+    "schenke",
+    "gebe",
+    "sende",
+    "schicke"
   ],
   "VerbDuLokation": [
     "kommst"
@@ -40,13 +30,21 @@
   "Hoeflichkeit": [
     "bitte"
   ],
+  "Objekt-Schließe": [
+    "die {Objekt-Die}",
+    "das {Objekt-Das}"
+  ],
   "Objekt-Die": [
     "Tür",
     "Treppe"
   ],
   "Objekt-Das": [
     "Handy",
-    "Auto"
+    "Auto",
+    "Kabel",
+    "Spiel",
+    "Buch",
+    "Haus"
   ],
   "Objekt-Der": [
     "Schreibtisch"
@@ -58,6 +56,16 @@
     "dir",
     "mich"
   ],
+  "Ort": [
+    "Berlin",
+    "Erfurt",
+    "Hamburg",
+    "München",
+    "Stuttgart"
+  ],
+  "Aufzaehlung": [
+    "und ein {Objekt-Das}"
+  ],
   "A": [
     "{Hoeflichkeit?} {B}"
   ],
@@ -66,6 +74,11 @@
   ],
   "C": [
     "Angeln",
-    "Arbeiten"
+    "Arbeiten",
+    "deine Aufgaben {D}"
+  ],
+  "D": [
+    "erledigen",
+    "machen"
   ]
 }
