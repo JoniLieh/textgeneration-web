@@ -1,6 +1,5 @@
 import type { IGrammar } from "~/types";
 
-const MAX_REPETITIONS: number = 3;
 const NOTATIONS: string[] = ['*', '+', '?'];
 
 function CapitalizeFirstLetter(sentence: string): string {
@@ -86,6 +85,7 @@ function HandleSentence(sentence: string, grammar: IGrammar, MAX_REPETITIONS: nu
 
   var finalSentence: string = sentence;
   
+  // Splitte alle Vorkommnisse mit "{" und "}" sowie Zeichenketten, die aus mindestens einem Zeichen besteht und keine Leerzeichen oder geschweiften Klammern enthält
   var sentenceParts: string[] = sentence.match(/\{.*?\}|[^\s{}]+/g) as string[];
 
   for (const partOfSentence of sentenceParts) {
