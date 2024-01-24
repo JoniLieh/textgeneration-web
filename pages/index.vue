@@ -64,7 +64,7 @@
       </v-col>
       <v-col md="6" sm="12">
         <v-card elevation="2">
-          <v-toolbar color="secondary" title="Generation">
+          <v-toolbar color="secondary" title="Generierung">
             <v-btn-toggle v-model="generationMode" mandatory>
               <v-btn color="secondary">Alle</v-btn>
               <v-btn color="secondary">Einzeln</v-btn>
