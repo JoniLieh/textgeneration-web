@@ -2,6 +2,15 @@ import type { IGrammar } from "~/types";
 
 const NOTATIONS: string[] = ['*', '+', '?'];
 
+const grammarComposableState = ref<IGrammar>({})
+
+useFetch('/grammar.json')
+.then((result) => {
+  grammarComposableState.value = result.data.value as IGrammar
+}).catch((err) => {
+  console.log("Error while fetching grammar.json", err);
+});
+
 function CapitalizeFirstLetter(sentence: string): string {
   if (!sentence || typeof sentence !== 'string') return ''; // Check for empty string or non-string input
 
@@ -116,10 +125,85 @@ function HandleSentence(sentence: string, grammar: IGrammar, MAX_REPETITIONS: nu
   return finalSentence;
 }
 
-export const useGenerateSentence = (sentence: string, grammar: IGrammar, MAX_REPETITIONS: number): string => {
-  let lookedUpSentence = HandleSentence(sentence, grammar, MAX_REPETITIONS)
+function useGenerateSentenceReverse(terminalSymbol: string, grammarGiven: IGrammar, MAX_REPETITIONS: number, START_SYMBOL: string): { title: string, subtitle: string } {
+  var history: {
+    [key: string]: string
+  }[] = [];
+
+  // find furthest Start => either in StartSymbol or nonterminal
+
+  function findKeyHistoryByValueInGrammar(valueToReverse: string | RegExp, oldKey?: string) {
+    if (oldKey) {
+      history.push({
+        key: oldKey,
+        value: valueToReverse  as string
+      });
+      valueToReverse = new RegExp(`\\{(${oldKey})([+*?]?)\\}`) // {<Key><+*?>} // Key in geschweiften Klammern gefolgt von optionaler Notation // fix Notations Lookup
+    }
+    if (oldKey == START_SYMBOL) {
+      return history // return final history
+    }
+
+    var grammarLookup = structuredClone(toRaw(grammarGiven)) // deep copy of grammar to edit it
+
+    // wenn neuer Key gefunden wurde => erneut funktion aufrufen : ansonsten derzeitigen Key zurückgeben
+    for (const grammarKey in grammarLookup) {
+      // für jeden NichtTerminal in grammar
+      
+      if (Object.prototype.hasOwnProperty.call(grammarLookup, grammarKey)) {
+        const rightSideArray = grammarLookup[grammarKey]; // right side Array (terminals/nonterminals)
+
+        for (const elementRSA of rightSideArray) { // RSA RightSideArray
+          if (history.length == 0 ? elementRSA == valueToReverse : elementRSA.match(valueToReverse)) { // when first iteration look for exact terminalSymbol else test Regex // mir → {Hoeflichkeit?} {VerbGeben} mir ein {Objekt-Das} {Aufzaehlung*} → WRONG
+            // found our value to reverse, check if its further(new)
+
+            if (grammarKey != oldKey) {
+              // found new furthest key, lookup the current key
+              delete grammarLookup[grammarKey] // delete already found key
+
+              return findKeyHistoryByValueInGrammar(elementRSA, grammarKey)
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // immediately execute recursive function
+  findKeyHistoryByValueInGrammar(terminalSymbol)
+
+  // build final Sentence
+  let title = "";
+  let subtitle = "";
+  history = history.reverse()
+
+  history.forEach(({ key, value }, index) => {
+    title += index != history.length-1 ? value : ``,
+    subtitle += key + (index != history.length-1 ? ' → ' : ` → ${terminalSymbol}`) // add following arrow
+  });
+
+  var originalTitle = title; // make copy and mutate the old one
+
+  while (!title.includes(terminalSymbol)) {
+    // bruteforce till terminalSymbol is included
+    title = HandleSentence(originalTitle, grammarGiven, MAX_REPETITIONS);
+  }
+
+  return { title, subtitle }
+}
+
+const useGenerateSentence = (sentence: string, grammarGiven: IGrammar, MAX_REPETITIONS: number): string => {
+  grammarComposableState.value = grammarGiven
+
+  let lookedUpSentence = HandleSentence(sentence, grammarGiven, MAX_REPETITIONS)
+
   lookedUpSentence = lookedUpSentence.trim()
   lookedUpSentence = CapitalizeFirstLetter(lookedUpSentence);
 
   return lookedUpSentence
+}
+
+export {
+  useGenerateSentence,
+  useGenerateSentenceReverse
 }
