@@ -13,6 +13,8 @@ useFetch('/grammar.json')
 
 function CapitalizeFirstLetter(sentence: string): string {
   if (!sentence || typeof sentence !== 'string') return ''; // Check for empty string or non-string input
+  
+  sentence = sentence.trim()
 
   return sentence.charAt(0).toUpperCase() + sentence.slice(1);
 }
@@ -173,20 +175,24 @@ function useGenerateSentenceReverse(terminalSymbol: string, grammarGiven: IGramm
   findKeyHistoryByValueInGrammar(terminalSymbol)
 
   // build final Sentence
-  let title = "";
-  let subtitle = "";
   history = history.reverse()
+  let title = history[0].value; // set root as title to bruteforce
+  let subtitle = "";
 
   history.forEach(({ key, value }, index) => {
-    title += index != history.length-1 ? value : ``,
+    // title += index != history.length-1 ? value : ``,
     subtitle += key + (index != history.length-1 ? ' → ' : ` → ${terminalSymbol}`) // add following arrow
   });
 
   var originalTitle = title; // make copy and mutate the old one
 
-  while (!title.includes(terminalSymbol)) {
+  const MAX_TRIES = 9999;
+  let currentTries = 1;
+
+  while (!title.includes(terminalSymbol) && currentTries < MAX_TRIES) {
     // bruteforce till terminalSymbol is included
-    title = HandleSentence(originalTitle, grammarGiven, MAX_REPETITIONS);
+    title = CapitalizeFirstLetter(HandleSentence(originalTitle, grammarGiven, MAX_REPETITIONS));
+    currentTries++;
   }
 
   return { title, subtitle }
