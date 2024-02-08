@@ -18,14 +18,14 @@
     "@nuxt/types": "^2.17.3",
     "@nuxt/typescript-build": "^3.0.2",
     "@pinia/nuxt": "^0.5.1",
-    "nuxt": "^3.9.3",
+    "nuxt": "^3.10.1",
     "pinia": "^2.1.7",
     "sass": "^1.70.0",
     "typescript": "^5.3.3",
     "vite-plugin-vuetify": "^2.0.1",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5",
-    "vuetify": "^3.5.1"
+    "vuetify": "^3.5.2"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
