@@ -33,7 +33,6 @@ function ReplacePartOfSentence(partOfSentence: string, grammar: IGrammar, MAX_RE
   // remove notation from part of sentence
   partOfSentence = NOTATIONS.includes(notation) ? partOfSentence.slice(0, partOfSentenceLength - 1) : partOfSentence
 
-
   if (notation === '*') {
     // für 0 bis n Wiederholungen auf der rechten Seite einer Produktionsregel
     let repetitions = Math.floor(Math.random() * MAX_REPETITIONS); // random repetitions between 0 and MAX_REPETITIONS
@@ -47,7 +46,6 @@ function ReplacePartOfSentence(partOfSentence: string, grammar: IGrammar, MAX_RE
       if (index < repetitions-1)
         replacement += ' '
     }
-
   } else if (notation === '+') {
     // für 1 bis n Wiederholungen auf der rechten Seite der Produktionsregel
     let repetitions = Math.floor(Math.random() * MAX_REPETITIONS) + 1; // random repetitions between 1 and MAX_REPETITIONS
@@ -92,7 +90,7 @@ function ReplaceWithGrammarWord(sentence: string, partOfSentence: string, looked
 
 
 function HandleSentence(sentence: string, grammar: IGrammar, MAX_REPETITIONS: number): string {
-  // "{Hoeflichkeit?}{VerbDu} du ich er Sie es {Subjekt} wir to "['{Hoeflichkeit?}','{VerbDu}','du','ich','er','Sie','es','{Subjekt}','wir']
+  // "{Hoeflichkeit?}{VerbDu} du ich er Sie es {Subjekt} wir" => "['{Hoeflichkeit?}','{VerbDu}','du','ich','er','Sie','es','{Subjekt}','wir']"
 
   var finalSentence: string = sentence;
   
@@ -134,7 +132,7 @@ function useGenerateSentenceReverse(terminalSymbol: string, grammarGiven: IGramm
 
   // find furthest Start => either in StartSymbol or nonterminal
 
-  function findKeyHistoryByValueInGrammar(valueToReverse: string | RegExp, oldKey?: string) {
+  function FindKeyHistoryByValueInGrammar(valueToReverse: string | RegExp, oldKey?: string) {
     if (oldKey) {
       history.push({
         key: oldKey,
@@ -163,7 +161,7 @@ function useGenerateSentenceReverse(terminalSymbol: string, grammarGiven: IGramm
               // found new furthest key, lookup the current key
               delete grammarLookup[grammarKey] // delete already found key
 
-              return findKeyHistoryByValueInGrammar(elementRSA, grammarKey)
+              return FindKeyHistoryByValueInGrammar(elementRSA, grammarKey)
             }
           }
         }
@@ -172,7 +170,7 @@ function useGenerateSentenceReverse(terminalSymbol: string, grammarGiven: IGramm
   }
 
   // immediately execute recursive function
-  findKeyHistoryByValueInGrammar(terminalSymbol)
+  FindKeyHistoryByValueInGrammar(terminalSymbol)
 
   // build final Sentence
   history = history.reverse()

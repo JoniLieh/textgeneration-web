@@ -23,10 +23,11 @@ ein Terminal‐Symbol vorgelegt werden, das in der generierten gültigen Zeichen
 Startsymbol der Grammatik enthalten sein muss.
 
 ## Preview
+> ![previewImage](https://i.imgur.com/9ukevnA.png)
 >[https://textgeneration-web.vercel.app/](https://textgeneration-web.vercel.app/)
-![previewImage](https://i.imgur.com/3O7p7Nw.png)
 
 ## How to run w/ bun
+* Have bun installed https://bun.sh/
 ```sh
 bun install
 # Development
