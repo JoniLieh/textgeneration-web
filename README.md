@@ -26,7 +26,7 @@ Startsymbol der Grammatik enthalten sein muss.
 > ![previewImage](https://i.imgur.com/9ukevnA.png)
 >[https://textgeneration-web.vercel.app/](https://textgeneration-web.vercel.app/)
 
-## How to run w/ bun
+## How to run with `bun`
 * Have bun installed https://bun.sh/
 ```sh
 bun install
@@ -37,8 +37,8 @@ bun run build
 bun run start
 ```
 
-## Textgeneration code file location
-> composables/useGenerateSentence.ts
+## Textgeneration location
+> `composables/useGenerateSentence.ts`
 
 # Nuxt 3
 
