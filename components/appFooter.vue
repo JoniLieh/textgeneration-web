@@ -26,12 +26,9 @@ import { useTheme } from "vuetify";
 const theme = useTheme();
 
 const footerLinks: any = [
-  // {
-  //   text: "Impressum",
-  //   link: ""
-  // },{
-  //   text: "Datenschutz",
-  //   link: ""
-  // }
+  {
+    text: "Made by JoniLieh",
+    link: "https://github.com/JoniLieh"
+  }
 ]
 </script>
