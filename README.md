@@ -37,6 +37,9 @@ bun run build
 bun run start
 ```
 
+## Textgeneration code file location
+> composables/useGenerateSentence.ts
+
 # Nuxt 3
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
